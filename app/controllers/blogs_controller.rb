@@ -13,7 +13,13 @@ class BlogsController < ApplicationController
     Blog.create(title: params[:blog][:title], content: params[:blog][:content])
 
     #リダイレクト：指定したWebページから自動的に別のWebページに転送されること
-    redilect_to "/blogs/new"
+    #リダイレクトを行うときはURLではなく、Prefixで指定するのが一般的。
+    #Prefixはルーティングを自動生成するときに作成されるURLの別名。
+    #Prefixは”Rails routes”で確認できる。
+    #redilect_toにPrefixを指定するときは”Prefix名_path”と記載することが必要。
+    #Prefixに_pathとつけることで相対パスという意味になります。
+    #_urlとつけると絶対パスという意味になります。
+    redilect_to new_blog_path
   end
 
 end
