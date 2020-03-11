@@ -3,4 +3,6 @@ class BlogsController < ApplicationController
   #アクションが終了するとViewフォルダ内のblogs/index.html.erbを探そうとする。
   def index
   end
+  def new
+  end
 end
