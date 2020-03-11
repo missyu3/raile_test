@@ -15,7 +15,7 @@ class BlogsController < ApplicationController
     #Strong Parametersで渡す。
     #Strong Parametersは送られてきたpermitの何を許可するかを指定します。
     #permitで指定されていない列は渡されないようになっている。
-    Blog.create(params.require(:blog).permit(:title,:content))
+    Blog.create(blog_params)
 
 
     #リダイレクト：指定したWebページから自動的に別のWebページに転送されること
@@ -26,6 +26,11 @@ class BlogsController < ApplicationController
     #Prefixに_pathとつけることで相対パスという意味になります。
     #_urlとつけると絶対パスという意味になります。
     redilect_to new_blog_path
+  end
+
+  private 
+  def blog_params
+    return params.require(:blog).permit(:title,:content)
   end
 
 end
