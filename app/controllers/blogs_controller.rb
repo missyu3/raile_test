@@ -7,6 +7,10 @@ class BlogsController < ApplicationController
     @blog = Blog.new 
   end
 
+  def index
+    @blogs = Blog.all
+  end
+
   def create
     #paramsメソッドを使用することで、引数を取得できる。
     #送られてきた引数は{"blog"=>{"title"=>"hoge", "content"=>"fuga"}}配列の中に配列が入っているため、下記のように取り出している。
@@ -22,10 +26,10 @@ class BlogsController < ApplicationController
     #リダイレクトを行うときはURLではなく、Prefixで指定するのが一般的。
     #Prefixはルーティングを自動生成するときに作成されるURLの別名。
     #Prefixは”Rails routes”で確認できる。
-    #redilect_toにPrefixを指定するときは”Prefix名_path”と記載することが必要。
+    #redirect_toにPrefixを指定するときは”Prefix名_path”と記載することが必要。
     #Prefixに_pathとつけることで相対パスという意味になります。
     #_urlとつけると絶対パスという意味になります。
-    redilect_to new_blog_path
+    redirect_to new_blog_path
   end
 
   private 
