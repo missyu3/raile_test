@@ -32,6 +32,9 @@ class BlogsController < ApplicationController
     redirect_to new_blog_path
   end
 
+  def show
+    @blog = Blog.find(params[:id])
+  end
   private 
   def blog_params
     return params.require(:blog).permit(:title,:content)
