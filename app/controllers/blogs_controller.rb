@@ -1,4 +1,6 @@
 class BlogsController < ApplicationController
+
+  before_action :set_blog, only: [:show, :edit, :update]
   #アクション＝コントローラー内にあるメソッド
   #アクションが終了するとViewフォルダ内のblogs/index.html.erbを探そうとする。
   def index
@@ -39,11 +41,11 @@ class BlogsController < ApplicationController
   end
 
   def edit
-    @blog = Blog.find(params[:id])
+  
   end
 
 def update 
-  @blog = Blog.find(params[:id])
+  
   if  @blog.update(blog_params)
     redirect_to blogs_path,notice: "ブログを編集しました。"
   else
@@ -53,11 +55,14 @@ def update
 end 
 
   def show
-    @blog = Blog.find(params[:id])
+    
   end
   private 
   def blog_params
     return params.require(:blog).permit(:title,:content)
+  end
+  def set_blog
+    @blog = Blog.find(params[:id])
   end
 
 end
