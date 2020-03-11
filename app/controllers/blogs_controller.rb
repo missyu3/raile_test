@@ -11,6 +11,9 @@ class BlogsController < ApplicationController
     #paramsメソッドを使用することで、引数を取得できる。
     #送られてきた引数は{"blog"=>{"title"=>"hoge", "content"=>"fuga"}}配列の中に配列が入っているため、下記のように取り出している。
     Blog.create(title: params[:blog][:title], content: params[:blog][:content])
+
+    #リダイレクト：指定したWebページから自動的に別のWebページに転送されること
+    redilect_to "/blogs/new"
   end
 
 end
