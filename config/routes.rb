@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'stocks/index'
+  # HTTPメソッド　'URL', to:'コントローラ名#メソッド名'
   get '/blogs', to:'blogs#index'
-
+  get '/stocks', to:'stocks#index'
 end
