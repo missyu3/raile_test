@@ -13,6 +13,10 @@ class BlogsController < ApplicationController
     @blogs = Blog.all
   end
 
+  def confirm
+    @blog = Blog.new(blog_params)
+  end
+  
   def create
     #paramsメソッドを使用することで、引数を取得できる。
     #送られてきた引数は{"blog"=>{"title"=>"hoge", "content"=>"fuga"}}配列の中に配列が入っているため、下記のように取り出している。
@@ -25,7 +29,7 @@ class BlogsController < ApplicationController
 
     @blog = Blog.new(blog_params)
     if @blog.save 
-      redirect_to blog_path, notice:"ブログを作成しました！"
+      redirect_to blogs_path, notice:"ブログを作成しました！"
     else
       render:new
     end
