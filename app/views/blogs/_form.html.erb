@@ -1,5 +1,7 @@
-#パーシャルであることを宣言するため、ファイル名称の先頭は_とする。
-<%= form_with(model: @blog, local: true) do |form| %>
+<%#
+ パーシャルであることを宣言するため、ファイル名称の先頭は_とする。
+%>
+ <%= form_with(model: @blog, local: true) do |form| %>
   <% if @blog.errors.any? %>
     <div id="error_explanation">
       <h2><%= @blog.errors.count %>件のエラーがあります。</h2>
