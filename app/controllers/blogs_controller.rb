@@ -28,12 +28,12 @@ class BlogsController < ApplicationController
     #permitで指定されていない列は渡されないようになっている。
     #Blog.create(blog_params)
 
-    @blog = Blog.new(blog_params)
-    if @blog.save 
-      redirect_to blogs_path, notice:"ブログを作成しました！"
-    else
-      render:new
-    end
+      @blog = Blog.new(blog_params)
+      if @blog.save 
+        redirect_to blogs_path, notice:"ブログを作成しました！"
+      else
+        render:new
+      end
 
     #リダイレクト：指定したWebページから自動的に別のWebページに転送されること
     #リダイレクトを行うときはURLではなく、Prefixで指定するのが一般的。
@@ -51,31 +51,33 @@ class BlogsController < ApplicationController
 
   def update 
   
-  if  @blog.update(blog_params)
-    redirect_to blogs_path,notice: "ブログを編集しました。"
-  else
-    render :edit 
-  end
+    if  @blog.update(blog_params)
+      redirect_to blogs_path,notice: "ブログを編集しました。"
+    else
+      render :edit 
+    end
 
   end 
 
   def destroy
-  if @blog.destroy
-    redirect_to blogs_path,notice:"ブログを削除しました。"
-  else
-    render:edit
-  end
-
+    if @blog.destroy
+      redirect_to blogs_path,notice:"ブログを削除しました。"
+    else
+      render:edit
+    end
   end
 
 
   def show
     
   end
-  private 
+
+private 
+
   def blog_params
     return params.require(:blog).permit(:title,:content)
   end
+
   def set_blog
     @blog = Blog.find(params[:id])
   end
